@@ -40,7 +40,7 @@ func tambahData() {
 	fmt.Print("Masukkan nama peminjam: ")
 	fmt.Scanln(&nama)
 
-	// Validasi pinjaman
+	// validasi input (pinjaman yang dimau) 
 	pinjaman = -1
 	for pinjaman < 0 {
 		fmt.Print("Masukkan jumlah pinjaman (Rp): ")
@@ -50,7 +50,7 @@ func tambahData() {
 		}
 	}
 
-	// Validasi bunga
+	// validasi input (bunga)
 	bunga = -1
 	for bunga < 0 {
 		fmt.Print("Masukkan suku bunga per tahun (%): ")
@@ -60,7 +60,7 @@ func tambahData() {
 		}
 	}
 
-	// Validasi lama pinjaman
+	// validasi input (lama pinjaman)
 	lamaBulan = 0
 	for lamaBulan <= 0 {
 		fmt.Print("Masukkan lama pinjaman (bulan): ")
@@ -110,25 +110,20 @@ func tampilkanSemua() {
 }
 
 func cariNama() {
-	
 	var cari string
-	var i int
-	var ditemukan bool
-	
+	var idxDitemukan = -1
+
 	fmt.Print("Masukkan nama yang dicari: ")
 	fmt.Scanln(&cari)
 
-	i = 0
-	ditemukan = false
-	for i < totalPeminjam {
+	for i := 0; i < totalPeminjam; i++ {
 		if dataPeminjam[i].nama == cari {
-			ditemukan = true
+			idxDitemukan = i
 		}
-		i++
 	}
 
-	if ditemukan {
-		p := dataPeminjam[i]
+	if idxDitemukan != -1 {
+		p := dataPeminjam[idxDitemukan]
 		fmt.Printf("Ditemukan: %s\n", p.nama)
 		fmt.Printf("Total bayar: Rp%.0f\n", p.totalBayar)
 	} else {
@@ -181,7 +176,7 @@ func cariEkstrim() {
 	fmt.Printf("Total Bayar TERBESAR: %s = Rp%.0f\n", max.nama, max.totalBayar)
 }
 
-func main() {
+func Menu() {
 	var pilih int
 	for pilih != 6 {
 		fmt.Println("\n=== MENU UTAMA SIMULASI KREDIT SOLO ===")
@@ -210,4 +205,8 @@ func main() {
 			fmt.Println("Pilihan tidak valid.")
 		}
 	}
+}
+
+func main(){
+	Menu()
 }
