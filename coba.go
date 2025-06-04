@@ -199,7 +199,7 @@ func Menu() {
 			urutkanTotalBayar()
 		} else if pilih == 5 {
 			cariEkstrim()
-		} else if pilih == 7 {
+		} else if pilih == 6 {
 			fmt.Println("Terima kasih!")
 		} else {
 			fmt.Println("Pilihan tidak valid.")
